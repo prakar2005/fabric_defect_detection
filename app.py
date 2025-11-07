@@ -143,12 +143,16 @@ def predict_defect(image_pil):
 
 # MongoDB connection
 try:
-    client = MongoClient('mongodb://localhost:27017/')
-    db = client['fabric_defect_db']
-    users_collection = db['users']
-    print("Connected to MongoDB successfully!")
+    mongo_uri = os.getenv("MONGO_URI")  # Environment variable set in Render dashboard
+    if not mongo_uri:
+        raise Exception("MONGO_URI environment variable not set")
+
+    client = MongoClient(mongo_uri)
+    db = client["fabric_defect_db"]  # Your DB name
+    users_collection = db["users"]
+    print("✅ Connected to MongoDB successfully via Render/Atlas!")
 except Exception as e:
-    print(f"Error connecting to MongoDB: {e}")
+    print(f"❌ Error connecting to MongoDB: {e}")
     users_collection = None
 
 # History storage (in production, use a database)
