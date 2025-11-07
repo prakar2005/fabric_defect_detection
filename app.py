@@ -24,8 +24,8 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 # -------------------------------------------------------
 # Load ML Model + Encoder
 # -------------------------------------------------------
-MODEL_PATH = '/etc/secrets/best_model (1).keras'
-ENCODER_PATH = '/etc/secrets/label_encoder (3).pkl'
+MODEL_PATH = '/etc/secrets/best_model_1.keras'
+ENCODER_PATH = '/etc/secrets/label_encoder_3.pkl'
 model, label_encoder, CLASS_NAMES = None, None, None
 IMG_SIZE = (128, 128)
 
